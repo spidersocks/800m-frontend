@@ -2,8 +2,8 @@ import React, { useState, useEffect, useCallback, memo } from "react";
 import './App.css'
 import { Listbox } from "@headlessui/react";
 import { ChevronUpDownIcon } from "@heroicons/react/20/solid";
-import translations from "../../translations"; // <-- Make sure path is correct
-import { useLocation, useNavigate } from "react-router-dom";
+import translations from "../../translations"; 
+import { useParams, useLocation, useNavigate } from "react-router-dom";
 
 const SPLIT_FEATURES = {
   "600m_x3": 3,
@@ -273,8 +273,12 @@ function LangButton({ lang }) {
   );
 }
 
-export default function App({ lang = "en" }) {
-  const t = translations[lang] || translations.en;
+export default function App() {
+  const { lang } = useParams();
+  const location = useLocation();
+  // fallback for direct access or missing param
+  const langCode = lang === "zh" ? "zh" : "en";
+  const t = translations[langCode] || translations.en;
   const [mode, setMode] = useState("predict");
   const [trainingTypes, setTrainingTypes] = useState(t.trainingTypes);
   const [trainingType, setTrainingType] = useState(t.trainingTypes[0]);
