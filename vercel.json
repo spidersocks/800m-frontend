@@ -1,0 +1,20 @@
+{
+  "rewrites": [
+    {
+      "source": "/en/800m-calculator",
+      "destination": "/800m-calculator"
+    },
+    {
+      "source": "/en/800m-calculator/(.*)",
+      "destination": "/800m-calculator/$1"
+    },
+    {
+      "source": "/zh/800m-calculator",
+      "destination": "/800m-calculator"
+    },
+    {
+      "source": "/zh/800m-calculator/(.*)",
+      "destination": "/800m-calculator/$1"
+    }
+  ]
+}
